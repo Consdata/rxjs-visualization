@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "projects": {
+    "rxjs-presentation": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/rxjs-presentation",
+      "sourceRoot": "apps/rxjs-presentation/src",
+      "prefix": "arges",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/rxjs-presentation",
+            "index": "apps/rxjs-presentation/src/index.html",
+            "main": "apps/rxjs-presentation/src/main.ts",
+            "polyfills": "apps/rxjs-presentation/src/polyfills.ts",
+            "tsConfig": "apps/rxjs-presentation/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/rxjs-presentation/src/favicon.ico",
+              "apps/rxjs-presentation/src/assets"
+            ],
+            "styles": ["apps/rxjs-presentation/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/rxjs-presentation/src/environments/environment.ts",
+                  "with": "apps/rxjs-presentation/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "rxjs-presentation:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "rxjs-presentation:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "rxjs-presentation:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/rxjs-presentation/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/rxjs-presentation/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "rxjs-presentation-e2e": {
+      "root": "apps/rxjs-presentation-e2e",
+      "sourceRoot": "apps/rxjs-presentation-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/rxjs-presentation-e2e/cypress.json",
+            "tsConfig": "apps/rxjs-presentation-e2e/tsconfig.e2e.json",
+            "devServerTarget": "rxjs-presentation:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "rxjs-presentation:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/rxjs-presentation-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "analytics": "8df58740-513c-44e0-a216-15ddff38c761"
+  },
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "rxjs-presentation"
+}
