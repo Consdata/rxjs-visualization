@@ -15,7 +15,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@arges/stream": ["libs/stream/src/index.ts"],
+      "@arges/observer": ["libs/observer/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

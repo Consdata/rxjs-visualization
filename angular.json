@@ -25,7 +25,10 @@
               "apps/rxjs-presentation/src/favicon.ico",
               "apps/rxjs-presentation/src/assets"
             ],
-            "styles": ["apps/rxjs-presentation/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "apps/rxjs-presentation/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -79,7 +82,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/rxjs-presentation/src/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/rxjs-presentation/src/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -112,8 +117,66 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/rxjs-presentation-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/rxjs-presentation-e2e/**/*.{js,ts}"
+            ]
           }
+        }
+      }
+    },
+    "stream": {
+      "projectType": "library",
+      "root": "libs/stream",
+      "sourceRoot": "libs/stream/src",
+      "prefix": "arges",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/stream/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stream/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "observer": {
+      "projectType": "library",
+      "root": "libs/observer",
+      "sourceRoot": "libs/observer/src",
+      "prefix": "arges",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/observer/src/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/observer/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
         }
       }
     }
@@ -133,6 +196,10 @@
       "storybook-configuration": {
         "linter": "eslint"
       }
+    },
+    "@schematics/angular:component": {
+      "inlineTemplate": true,
+      "changeDetection": "OnPush"
     },
     "@nrwl/angular:application": {
       "unitTestRunner": "jest",
