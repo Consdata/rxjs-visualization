@@ -14,6 +14,7 @@ import { ShareReplayComponent } from './operators/share-replay/share-replay.comp
 import { CombineLatestComponent } from './operators/combine-latest/combine-latest.component';
 import { MergeComponent } from './operators/merge/merge.component';
 import { WithLatestFromComponent } from './operators/with-latest-from/with-latest-from.component';
+import { StreamModule } from '@arges/stream';
 
 const routes: Routes = [
   { path: 'subject', component: SubjectComponent },
@@ -29,7 +30,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [AppComponent, SubjectComponent, ReplaySubjectComponent, BehaviorSubjectComponent, AsyncSubjectComponent, ShareReplayComponent, CombineLatestComponent, MergeComponent, WithLatestFromComponent],
-  imports: [BrowserModule, RouterModule.forRoot(routes), BrowserAnimationsModule, MatListModule, MatTabsModule],
+  imports: [BrowserModule, RouterModule.forRoot(routes), BrowserAnimationsModule, MatListModule, MatTabsModule, StreamModule],
   providers: [],
   bootstrap: [AppComponent]
 })

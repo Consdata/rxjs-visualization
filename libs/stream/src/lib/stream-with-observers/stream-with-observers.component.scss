@@ -1,0 +1,28 @@
+:host {
+  $margin-left: 15px;
+
+  .wrapper {
+    width: 30vw;
+  }
+
+  .stream-wrapper {
+    border-top: darkcyan 4px solid;
+    border-bottom: darkcyan 4px solid;
+    min-height: 5em;
+    margin-left: $margin-left;
+  }
+
+  .stream-title {
+    margin-left: $margin-left;
+    font-size: 18px;
+    align-self: flex-end;
+  }
+
+  .observers {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    max-width: 50%;
+  }
+
+}

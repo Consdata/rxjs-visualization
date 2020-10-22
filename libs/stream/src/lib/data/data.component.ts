@@ -1,14 +1,15 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'arges-data',
   template: `
-    <div class="circle">{{data}}</div>
+    <div class="circle">
+      <ng-content></ng-content>
+    </div>
   `,
   styleUrls: ['./data.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DataComponent {
 
-  @Input() data: string | number;
 }

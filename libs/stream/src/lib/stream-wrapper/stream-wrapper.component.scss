@@ -1,7 +1,21 @@
 :host {
   width: 100%;
-  .wrapper {
-    border-top: darkcyan 2px solid;
-    border-bottom: darkcyan 2px solid;
+
+
+  .description {
+    padding-top: 5em;
+    margin-left: 50%;
+  }
+
+
+
+  code {
+    padding: 15px 15px 15px 0;
+    font-size: 18px;
+  }
+
+
+  arges-stream {
+    width: 100%;
   }
 }
