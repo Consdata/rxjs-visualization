@@ -82,9 +82,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/rxjs-presentation/src/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/rxjs-presentation/src/**/*.ts"]
           }
         },
         "test": {
@@ -117,9 +115,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/rxjs-presentation-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/rxjs-presentation-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -133,9 +129,7 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/stream/src/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/stream/src/**/*.ts"]
           }
         },
         "test": {
@@ -161,15 +155,39 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/observer/src/**/*.ts"
-            ]
+            "lintFilePatterns": ["libs/observer/src/**/*.ts"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/observer/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "stream-data": {
+      "projectType": "library",
+      "root": "libs/stream-data",
+      "sourceRoot": "libs/stream-data/src",
+      "prefix": "arges",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/stream-data/src/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/stream-data/jest.config.js",
             "passWithNoTests": true
           }
         }

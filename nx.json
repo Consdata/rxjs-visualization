@@ -38,6 +38,9 @@
     },
     "observer": {
       "tags": []
+    },
+    "stream-data": {
+      "tags": []
     }
   }
 }

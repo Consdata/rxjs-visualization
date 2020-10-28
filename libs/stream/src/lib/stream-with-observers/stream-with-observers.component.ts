@@ -9,34 +9,38 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ConnectedPosition } from '@angular/cdk/overlay';
+import { StreamValue } from '@arges/stream-data';
 
 @Component({
   selector: 'arges-stream-with-observers',
   template: `
-    <div class="wrapper">
-      <div style="display: flex; justify-content: space-between; margin-bottom: 15px">
-        <div class="stream-title">{{streamName}}</div>
-        <div class="observers">
-          <ng-container *ngFor="let observer of stream.observers; let index= index">
-            <arges-observer [observer]="observer" [value]="observersValues[index]"></arges-observer>
-          </ng-container>
+    <mat-card>
+      <div class="wrapper">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 15px; min-height: 150px">
+          <div class="stream-title">{{streamName}}</div>
+          <div class="observers">
+            <ng-container *ngFor="let observer of observersValues | keyvalue; let index= index">
+              <arges-observer [value]="observer.value"></arges-observer>
+            </ng-container>
+          </div>
+          <div style="display: flex; flex-direction: column">
+            <arges-add-observer [disabled]="stream.closed"
+                                (addedObserver)="onObserverAdd($event)"></arges-add-observer>
+            <button mat-flat-button [color]="'primary'" [disabled]="stream.isStopped" (click)="onStreamCompleteClick()"
+                    style="margin-top: 15px">Zakończ strumień
+            </button>
+          </div>
         </div>
-        <div style="display: flex; flex-direction: column">
-          <arges-add-observer [disabled]="stream.isStopped"
-                              (addedObserver)="onObserverAdd($event)"></arges-add-observer>
-          <button mat-flat-button [color]="'primary'" [disabled]="stream.isStopped" (click)="emitClick.next()"
-                  style="margin-top: 15px">
-            Wyemituj
-          </button>
-          <button mat-flat-button [color]="'primary'" [disabled]="stream.isStopped" (click)="onStreamCompleteClick()"
-                  style="margin-top: 15px">Zakończ strumień
-          </button>
+        <div class="stream-wrapper"
+             cdk-overlay-origin #origin="cdkOverlayOrigin"
+             (click)="emitClick.next()"
+             [class.closed]="stream.isStopped"
+             [matTooltip]="stream.isStopped ? 'Strumień zamknięty' : 'Kliknij aby wyemitować wartość ze strumienia'">
+          <arges-stream [stream]="stream"></arges-stream>
         </div>
       </div>
-      <div class="stream-wrapper" cdk-overlay-origin #origin="cdkOverlayOrigin">
-        <arges-stream [stream]="stream" (emitted)="onEmission($event)"></arges-stream>
-      </div>
-    </div>
+    </mat-card>
+
     <ng-template cdk-connected-overlay
                  [cdkConnectedOverlayOrigin]="origin"
                  [cdkConnectedOverlayOpen]="stream.isStopped || stream.closed"
@@ -49,7 +53,7 @@ import { ConnectedPosition } from '@angular/cdk/overlay';
 })
 export class StreamWithObserversComponent implements AfterViewChecked {
   @Input() streamName: string;
-  @Input() stream: Subject<{ value: unknown }>;
+  @Input() stream: Subject<StreamValue>;
   @Output() emitClick = new EventEmitter<void>();
   positions: ConnectedPosition[] = [{
     originX: 'end',
@@ -57,7 +61,7 @@ export class StreamWithObserversComponent implements AfterViewChecked {
     overlayX: 'center',
     overlayY: 'center'
   }];
-  observersValues: { [key: string]: { value: unknown } } = {};
+  observersValues: { [key: string]: StreamValue } = {};
 
   constructor(private cdRef: ChangeDetectorRef) {
   }
@@ -76,9 +80,5 @@ export class StreamWithObserversComponent implements AfterViewChecked {
 
   onStreamCompleteClick() {
     this.stream.complete();
-  }
-
-  onEmission(emitted: { value: unknown }) {
-    this.observersValues = { ...this.observersValues, [0]: emitted };
   }
 }

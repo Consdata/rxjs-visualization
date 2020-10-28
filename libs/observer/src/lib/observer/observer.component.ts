@@ -1,12 +1,16 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Observer } from 'rxjs';
+import { StreamValue } from '@arges/stream-data';
 
 @Component({
   selector: 'arges-observer',
   template: `
     <div style="display: flex; flex-direction: column">
-      <div style="align-self: center">{{value?.value}}</div>
-      <img src="/assets/human.png" alt="image" width="100px">
+      <div style="align-self: center; height: 45px">
+        <arges-data-in-circle *ngIf="value" [color]="value.color">
+          {{value.value}}
+        </arges-data-in-circle>
+      </div>
+      <img src="/assets/human.png" alt="image" width="90px">
     </div>
   `,
   styleUrls: ['./observer.component.scss'],
@@ -14,8 +18,6 @@ import { Observer } from 'rxjs';
 })
 export class ObserverComponent {
 
-  @Input() value: { value: unknown };
-
-  @Input() observer: Observer<{ value: number }>;
+  @Input() value: StreamValue;
 
 }

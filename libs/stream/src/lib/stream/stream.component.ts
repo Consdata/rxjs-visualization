@@ -1,12 +1,14 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { Subject } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+import { scan } from 'rxjs/operators';
 
 @Component({
   selector: 'arges-stream',
   template: `
     <ng-container *ngIf="stream$ | async as stream">
-      <arges-data> {{stream.value}}</arges-data>
+      <ng-container *ngFor="let single of stream; let index=index">
+        <arges-data [index]="index" [color]="single.color"> {{single.value}}</arges-data>
+      </ng-container>
     </ng-container>
   `,
   styleUrls: ['./stream.component.scss'],
@@ -14,14 +16,10 @@ import { tap } from 'rxjs/operators';
 })
 export class StreamComponent {
 
-  stream$;
-  @Output() emitted = new EventEmitter<{ value: unknown }>();
+  stream$: Observable<{ value: string | number, color: string }[]>;
 
-  @Input('stream') set stream(stream: Subject<{ value: unknown }>) {
-    this.stream$ = stream.pipe(tap(x => {
-      console.log(x);
-      this.emitted.emit(x);
-    }));
+  @Input('stream') set stream(stream: Observable<{ value: string | number, color: string }>) {
+    this.stream$ = stream.pipe(scan((acc, value) => [...acc, value], []));
   }
 
 }

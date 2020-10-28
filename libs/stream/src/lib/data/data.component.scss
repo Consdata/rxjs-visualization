@@ -1,8 +1,13 @@
 :host {
-  .circle {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
+  display: flex;
+  flex-direction: row;
+
+
+  .line {
+    width: 10px;
+    border: 1px solid;
+    height: 1px;
+    background-color: black;
+    align-self: center;
   }
 }
-

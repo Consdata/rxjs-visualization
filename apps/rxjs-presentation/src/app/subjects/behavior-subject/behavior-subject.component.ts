@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { StreamConfig } from '@arges/stream';
+import { randomColor, StreamValue } from '@arges/stream-data';
 
 @Component({
   selector: 'arges-behavior-subject',
@@ -14,15 +15,15 @@ import { StreamConfig } from '@arges/stream';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BehaviorSubjectComponent {
-  stream$ = new BehaviorSubject<{ value: number }>({ value: 0 });
+  stream$ = new BehaviorSubject<StreamValue>({ value: 0 , color: 'white'});
   counter = 1;
 
-  config: StreamConfig<{ value: number }> = {
+  config: StreamConfig<StreamValue> = {
     stream: this.stream$,
     streamName: 'stream$',
-    onEmitClick: () => this.stream$.next({ value: this.counter++ })
+    onEmitClick: () => this.stream$.next({ value: this.counter++, color: randomColor() })
   };
 
-  exampleCode = `stream$ = new Subject<number>();`;
+  exampleCode = `stream$ = new BehaviorSubject<StreamValue>({ value: 0 });`;
 
 }

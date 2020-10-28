@@ -1,19 +1,17 @@
 :host {
+  display: grid;
+  grid-template-areas:
+    ". left0 . right0 ."
+    ". left1 . right1 .";
+  grid-template-columns: 4% 44% 4% 44% 4%;
+  grid-row-gap: 5em;
   width: 100%;
-
-
-  .description {
-    padding-top: 5em;
-    margin-left: 50%;
-  }
-
-
+  height: 100%;
+  padding-top: 5em;
 
   code {
-    padding: 15px 15px 15px 0;
-    font-size: 18px;
+    font-size: 16px;
   }
-
 
   arges-stream {
     width: 100%;

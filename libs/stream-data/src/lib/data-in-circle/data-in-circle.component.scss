@@ -1,0 +1,13 @@
+:host {
+
+  .circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid;
+    text-align: center;
+  }
+}

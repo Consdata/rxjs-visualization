@@ -17,7 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "@arges/stream": ["libs/stream/src/index.ts"],
-      "@arges/observer": ["libs/observer/src/index.ts"]
+      "@arges/observer": ["libs/observer/src/index.ts"],
+      "@arges/stream-data": ["libs/stream-data/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

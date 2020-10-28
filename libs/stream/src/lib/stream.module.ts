@@ -7,13 +7,19 @@ import { ObserverModule } from '@arges/observer';
 import { MatButtonModule } from '@angular/material/button';
 import { StreamWithObserversComponent } from './stream-with-observers/stream-with-observers.component';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { ObservableStreamComponent } from './observable-stream/observable-stream.component';
+import { MatCardModule } from '@angular/material/card';
+import { StreamDataModule } from '@arges/stream-data';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
-  imports: [CommonModule, ObserverModule, MatButtonModule, OverlayModule],
-  declarations: [StreamWrapperComponent, StreamComponent, DataComponent, StreamWithObserversComponent],
+  imports: [CommonModule, ObserverModule, MatButtonModule, OverlayModule, MatCardModule, StreamDataModule, MatTooltipModule],
+  declarations: [StreamWrapperComponent, StreamComponent, DataComponent, StreamWithObserversComponent, ObservableStreamComponent],
   exports: [
     StreamWrapperComponent,
-    StreamComponent
+    StreamComponent,
+    ObservableStreamComponent
   ]
 })
-export class StreamModule {}
+export class StreamModule {
+}
