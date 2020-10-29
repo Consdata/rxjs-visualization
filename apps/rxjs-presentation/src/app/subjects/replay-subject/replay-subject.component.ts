@@ -8,10 +8,10 @@ import { randomColor, StreamValue } from '@arges/stream-data';
   template: `
     <arges-stream-wrapper [description]="'Replay subject'"
                           [exampleCode]="exampleCode"
+                          [exampleUsages]="exampleUsages"
                           [config]="[config]">
     </arges-stream-wrapper>
   `,
-  styleUrls: ['./replay-subject.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ReplaySubjectComponent {
@@ -25,5 +25,7 @@ export class ReplaySubjectComponent {
   };
 
   exampleCode = `stream$ = new ReplaySubject<StreamValue>(1);`;
-
+  exampleUsages = `
+    When you want to provide late subscribers with latest values
+  `;
 }

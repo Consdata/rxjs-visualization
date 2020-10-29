@@ -13,10 +13,16 @@ import { StreamConfig } from '@arges/stream';
                                    (emitClick)="streamConfig.onEmitClick()">
       </arges-stream-with-observers>
     </ng-container>
-    <mat-card [style.grid-area]="'right0'">
-      <div class="description" *ngIf="description">
-        <h1>{{description}}</h1>
-        <pre><code> {{exampleCode}}</code></pre>
+    <mat-card [style.grid-area]="'right0'" class="description-card">
+      <mat-card-title>
+        {{description}}
+      </mat-card-title>
+      <pre><code> {{exampleCode}}</code></pre>
+      <div *ngIf="exampleUsages">
+        <div>Example usages:
+          <hr>
+        </div>
+        <span [innerHTML]="exampleUsages"></span>
       </div>
     </mat-card>
     <ng-container *ngFor="let observableConfig of observableConfig; let index = index;">
@@ -39,5 +45,6 @@ export class StreamWrapperComponent<T> {
   @Input() streamName: string;
   @Input() description: string;
   @Input() exampleCode: string;
+  @Input() exampleUsages: string;
 
 }

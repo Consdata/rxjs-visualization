@@ -21,19 +21,18 @@ import { Component } from '@angular/core';
     <div class="body">
       <router-outlet></router-outlet>
     </div>
-  `,
-  styleUrls: ['./app.component.scss']
+  `
 })
 export class AppComponent {
   activeLink: string;
 
-  subjectsLinks = [{ link: 'subject', icon: 'info', description: 'Subject' },
-    { link: 'behavior-subject', icon: 'info', description: 'BehaviorSubject' },
-    { link: 'replay-subject', icon: 'info', description: 'ReplaySubject' },
-    { link: 'async-subject', icon: 'info', description: 'AsyncSubject' }];
+  subjectsLinks = [{ link: 'subject', description: 'Subject' },
+    { link: 'behavior-subject', description: 'BehaviorSubject' },
+    { link: 'replay-subject', description: 'ReplaySubject' },
+    { link: 'async-subject', description: 'AsyncSubject' }];
 
-  operatorsLinks = [{ link: 'share-replay', icon: 'info', description: 'Share Replay' },
-    { link: 'combine-latest', icon: 'info', description: 'Combine Latest' },
-    { link: 'with-latest-from', icon: 'info', description: 'With Latest From' },
-    { link: 'merge', icon: 'info', description: 'Merge' }];
+  operatorsLinks = [{ link: 'share-replay', description: 'Share Replay' },
+    { link: 'combine-latest', description: 'Combine Latest' },
+    { link: 'with-latest-from', description: 'With Latest From' },
+    { link: 'merge', description: 'Merge' }];
 }

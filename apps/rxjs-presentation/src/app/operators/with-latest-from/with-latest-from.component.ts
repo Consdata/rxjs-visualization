@@ -9,11 +9,11 @@ import { map, withLatestFrom } from 'rxjs/operators';
   template: `
     <arges-stream-wrapper [description]="'WithLatestFrom operator'"
                           [exampleCode]="exampleCode"
+                          [exampleUsages]="exampleUsages"
                           [config]="config"
                           [observableConfig]="[mergeConfig]">
     </arges-stream-wrapper>
   `,
-  styleUrls: ['./with-latest-from.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WithLatestFromComponent {
@@ -54,5 +54,7 @@ export class WithLatestFromComponent {
     })));
   `;
 
-
+  exampleUsages = `
+    When you have main stream that you want to enrich with values from other stream <br>for example: in NgRx effects, when you need latest State snapshot
+  `;
 }

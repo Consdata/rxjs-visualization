@@ -9,10 +9,10 @@ import { StreamConfig } from '@arges/stream';
   template: `
     <arges-stream-wrapper [description]="'Share oraz ShareReplay operator'"
                           [exampleCode]="exampleCode"
+                          [exampleUsages]="exampleUsages"
                           [observableConfig]="shareReplayConfig">
     </arges-stream-wrapper>
   `,
-  styleUrls: ['./share-replay.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShareReplayComponent {
@@ -48,6 +48,10 @@ export class ShareReplayComponent {
         delay(5000),
         shareReplay(1)
       );
+  `;
+
+  exampleUsages = `
+    share(): when you subscribe to an observable in a template via AsyncPipe returned by service that makes HTTP calls <br>shareReplay(): same as share() but with data that very rarely changes and it's okay to cache the value through component lifecycle
   `;
 
 

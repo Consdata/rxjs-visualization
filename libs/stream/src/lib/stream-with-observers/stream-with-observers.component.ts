@@ -1,12 +1,4 @@
-import {
-  AfterViewChecked,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  Output
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ConnectedPosition } from '@angular/cdk/overlay';
 import { StreamValue } from '@arges/stream-data';
@@ -27,7 +19,7 @@ import { StreamValue } from '@arges/stream-data';
             <arges-add-observer [disabled]="stream.closed"
                                 (addedObserver)="onObserverAdd($event)"></arges-add-observer>
             <button mat-flat-button [color]="'primary'" [disabled]="stream.isStopped" (click)="onStreamCompleteClick()"
-                    style="margin-top: 15px">Zakończ strumień
+                    style="margin-top: 15px">Complete stream
             </button>
           </div>
         </div>
@@ -35,7 +27,7 @@ import { StreamValue } from '@arges/stream-data';
              cdk-overlay-origin #origin="cdkOverlayOrigin"
              (click)="emitClick.next()"
              [class.closed]="stream.isStopped"
-             [matTooltip]="stream.isStopped ? 'Strumień zamknięty' : 'Kliknij aby wyemitować wartość ze strumienia'">
+             [matTooltip]="stream.isStopped ? 'Stream completed' : 'Click to emit a value from stream'">
           <arges-stream [stream]="stream"></arges-stream>
         </div>
       </div>
@@ -51,7 +43,7 @@ import { StreamValue } from '@arges/stream-data';
   styleUrls: ['./stream-with-observers.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StreamWithObserversComponent implements AfterViewChecked {
+export class StreamWithObserversComponent {
   @Input() streamName: string;
   @Input() stream: Subject<StreamValue>;
   @Output() emitClick = new EventEmitter<void>();
@@ -62,14 +54,6 @@ export class StreamWithObserversComponent implements AfterViewChecked {
     overlayY: 'center'
   }];
   observersValues: { [key: string]: StreamValue } = {};
-
-  constructor(private cdRef: ChangeDetectorRef) {
-  }
-
-  ngAfterViewChecked(): void {
-    // coby obserwatorzy sie odswiezyli
-    this.cdRef.detectChanges();
-  }
 
   onObserverAdd(index: number) {
     this.observersValues = { ...this.observersValues, [index]: 123 };

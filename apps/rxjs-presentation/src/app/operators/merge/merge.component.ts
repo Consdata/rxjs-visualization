@@ -9,11 +9,11 @@ import { randomColor, StreamValue } from '@arges/stream-data';
   template: `
     <arges-stream-wrapper [description]="'Merge operator'"
                           [exampleCode]="exampleCode"
+                          [exampleUsages]="exampleUsages"
                           [config]="config"
                           [observableConfig]="[mergeConfig]">
     </arges-stream-wrapper>
   `,
-  styleUrls: ['./merge.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MergeComponent {
@@ -45,5 +45,7 @@ export class MergeComponent {
                   this.simpleStream$.asObservable());
   `;
 
-
+  exampleUsages = `
+    When you have multiple streams emitting values of the same type and want to react to every single emission - code reuse
+  `;
 }

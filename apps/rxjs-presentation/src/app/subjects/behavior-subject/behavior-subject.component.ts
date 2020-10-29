@@ -8,14 +8,14 @@ import { randomColor, StreamValue } from '@arges/stream-data';
   template: `
     <arges-stream-wrapper [description]="'Behavior subject'"
                           [exampleCode]="exampleCode"
+                          [exampleUsages]="exampleUsages"
                           [config]="[config]">
     </arges-stream-wrapper>
   `,
-  styleUrls: ['./behavior-subject.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BehaviorSubjectComponent {
-  stream$ = new BehaviorSubject<StreamValue>({ value: 0 , color: 'white'});
+  stream$ = new BehaviorSubject<StreamValue>({ value: 0, color: 'white' });
   counter = 1;
 
   config: StreamConfig<StreamValue> = {
@@ -25,5 +25,7 @@ export class BehaviorSubjectComponent {
   };
 
   exampleCode = `stream$ = new BehaviorSubject<StreamValue>({ value: 0 });`;
-
+  exampleUsages = `
+    When you need to start a stream with a initial value <br>for example: holding a flag that a button should be in disabled state
+  `;
 }

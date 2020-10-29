@@ -29,8 +29,25 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, SubjectComponent, ReplaySubjectComponent, BehaviorSubjectComponent, AsyncSubjectComponent, ShareReplayComponent, CombineLatestComponent, MergeComponent, WithLatestFromComponent],
-  imports: [BrowserModule, RouterModule.forRoot(routes, { useHash: true }), BrowserAnimationsModule, MatListModule, MatTabsModule, StreamModule],
+  declarations: [
+    AppComponent,
+    SubjectComponent,
+    ReplaySubjectComponent,
+    BehaviorSubjectComponent,
+    AsyncSubjectComponent,
+    ShareReplayComponent,
+    CombineLatestComponent,
+    MergeComponent,
+    WithLatestFromComponent
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes, { useHash: true }),
+    BrowserAnimationsModule,
+    MatListModule,
+    MatTabsModule,
+    StreamModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

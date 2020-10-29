@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 @Component({
   selector: 'arges-add-observer',
   template: `
-    <button mat-flat-button [color]="'primary'" [disabled]="disabled" (click)="onAddClick()"> Subskrybuj
+    <button mat-flat-button [color]="'primary'" [disabled]="disabled" (click)="onAddClick()"> Subscribe
     </button>
   `,
   styleUrls: ['./add-observer.component.scss'],

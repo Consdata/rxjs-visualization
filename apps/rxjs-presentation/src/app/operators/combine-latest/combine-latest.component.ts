@@ -9,11 +9,11 @@ import { StreamConfig } from '@arges/stream';
   template: `
     <arges-stream-wrapper [description]="'CombineLatest operator'"
                           [exampleCode]="exampleCode"
+                          [exampleUsages]="exampleUsages"
                           [config]="config"
                           [observableConfig]="[combineLatestConfig]">
     </arges-stream-wrapper>
   `,
-  styleUrls: ['./combine-latest.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CombineLatestComponent {
@@ -53,5 +53,7 @@ export class CombineLatestComponent {
       color: simpleValue.color || behaviorValue.color
     })));
   `;
-
+  exampleUsages = `
+    When you have multiple streams whose values are interdependent and you want to get array of those values anytime one of the combined streams emits
+  `;
 }

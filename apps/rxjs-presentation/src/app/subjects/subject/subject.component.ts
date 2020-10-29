@@ -6,12 +6,12 @@ import { randomColor, StreamValue } from '@arges/stream-data';
 @Component({
   selector: 'arges-subject',
   template: `
-    <arges-stream-wrapper [description]="'Standardowy subject'"
+    <arges-stream-wrapper [description]="'Standard subject'"
                           [exampleCode]="exampleCode"
+                          [exampleUsages]="exampleUsages"
                           [config]="[config]">
     </arges-stream-wrapper>
   `,
-  styleUrls: ['./subject.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SubjectComponent {
@@ -25,4 +25,7 @@ export class SubjectComponent {
   };
 
   exampleCode = `stream$ = new Subject<StreamValue>();`;
+  exampleUsages = `
+    Everywhere you want to reactively reuse data in your app :)
+  `;
 }

@@ -35,8 +35,8 @@ import { finalize } from 'rxjs/operators';
 })
 export class ObservableStreamComponent {
   @Input() streamName: string;
-  observable: Observable<StreamValue>;
   @Output() emitClick = new EventEmitter<void>();
+  observable: Observable<StreamValue>;
   positions: ConnectedPosition[] = [{
     originX: 'end',
     originY: 'center',
@@ -57,7 +57,7 @@ export class ObservableStreamComponent {
   }
 
   onObserverAdd(index: number) {
-    this.observersValues = { ...this.observersValues, [index]: 123 };
+    this.observersValues = { ...this.observersValues, [index]: null };
     this.observable.subscribe(value => {
       this.observersValues = { ...this.observersValues, [index]: value };
     });

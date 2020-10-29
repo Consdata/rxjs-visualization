@@ -8,10 +8,10 @@ import { randomColor, StreamValue } from '@arges/stream-data';
   template: `
     <arges-stream-wrapper [description]="'Async subject'"
                           [exampleCode]="exampleCode"
+                          [exampleUsages]="exampleUsages"
                           [config]="[config]">
     </arges-stream-wrapper>
   `,
-  styleUrls: ['./async-subject.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AsyncSubjectComponent {
@@ -25,4 +25,7 @@ export class AsyncSubjectComponent {
   };
 
   exampleCode = `stream$ = new AsyncSubject<StreamValue>();`;
+  exampleUsages = `
+    When you don't care/need any value but the last that is emitted after further stream emission is no more
+  `;
 }

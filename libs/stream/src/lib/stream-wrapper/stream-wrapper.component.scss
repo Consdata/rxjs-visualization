@@ -16,4 +16,10 @@
   arges-stream {
     width: 100%;
   }
+
+  .description-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 }

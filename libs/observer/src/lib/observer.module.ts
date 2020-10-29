@@ -6,8 +6,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { StreamDataModule } from '@arges/stream-data';
 
 @NgModule({
-  imports: [CommonModule, MatButtonModule, StreamDataModule],
-  declarations: [ObserverComponent, AddObserverComponent],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    StreamDataModule
+  ],
+  declarations: [
+    ObserverComponent,
+    AddObserverComponent
+  ],
   exports: [
     ObserverComponent,
     AddObserverComponent

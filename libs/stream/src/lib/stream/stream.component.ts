@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { scan } from 'rxjs/operators';
+import { StreamValue } from '@arges/stream-data';
 
 @Component({
   selector: 'arges-stream',
@@ -16,10 +17,10 @@ import { scan } from 'rxjs/operators';
 })
 export class StreamComponent {
 
-  stream$: Observable<{ value: string | number, color: string }[]>;
+  stream$: Observable<StreamValue[]>;
 
-  @Input('stream') set stream(stream: Observable<{ value: string | number, color: string }>) {
-    this.stream$ = stream.pipe(scan((acc, value) => [...acc, value], []));
+  @Input('stream') set stream(stream: Observable<StreamValue>) {
+    this.stream$ = stream.pipe(scan((acc, value) => [...acc, value], <StreamValue[]>[]));
   }
 
 }
