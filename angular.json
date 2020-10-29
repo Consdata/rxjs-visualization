@@ -82,7 +82,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/rxjs-presentation/src/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/rxjs-presentation/src/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -91,6 +93,10 @@
             "jestConfig": "apps/rxjs-presentation/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     },
@@ -115,7 +121,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/rxjs-presentation-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/rxjs-presentation-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -129,7 +137,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/stream/src/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/stream/src/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -155,7 +165,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/observer/src/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/observer/src/**/*.ts"
+            ]
           }
         },
         "test": {
@@ -181,7 +193,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/stream-data/src/**/*.ts"]
+            "lintFilePatterns": [
+              "libs/stream-data/src/**/*.ts"
+            ]
           }
         },
         "test": {
