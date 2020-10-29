@@ -10,7 +10,7 @@ import { StreamValue } from '@arges/stream-data';
           {{value.value}}
         </arges-data-in-circle>
       </div>
-      <img src="/assets/human.png" alt="image" width="90px">
+      <img src="./assets/human.png" alt="image" width="90px">
     </div>
   `,
   styleUrls: ['./observer.component.scss'],
