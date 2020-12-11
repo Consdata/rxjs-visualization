@@ -7,7 +7,7 @@ import { StreamConfig } from '@arges/stream';
 @Component({
   selector: 'arges-share-replay',
   template: `
-    <arges-stream-wrapper [description]="'Share oraz ShareReplay operator'"
+    <arges-stream-wrapper [description]="'Share and ShareReplay operator'"
                           [exampleCode]="exampleCode"
                           [exampleUsages]="exampleUsages"
                           [observableConfig]="shareReplayConfig">
