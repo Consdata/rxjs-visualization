@@ -37,6 +37,6 @@ export class LastComponent {
   `;
 
     exampleUsages = `
-    Similarly to AsyncSubject - when you don't care about all other values except for last one. 
+    Similarly to AsyncSubject - when you don't care about all other values except for last one. For example: you're implementing a game and want to hold user score in a hot stream, displaying the value somewhere on the screen. You could use last() operator when user completes a round (wins or loses) and display the score that was emitted as a last value - for example to show it on summary screen.
   `;
 }
