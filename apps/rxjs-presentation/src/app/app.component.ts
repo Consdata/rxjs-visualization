@@ -35,12 +35,12 @@ export class AppComponent {
         {link: 'combine-latest', description: 'Combine Latest'},
         {link: 'with-latest-from', description: 'With Latest From'},
         {link: 'merge', description: 'Merge'},
-        {link: 'zip', description: 'Zip'},
         {link: 'first', description: 'First'},
         {link: 'last', description: 'Last'},
-        {link: 'concat-map', description: 'ConcatMap'},
+        {link: 'take-until', description: 'TakeUntil'},
         {link: 'debounce-time', description: 'Debounce'},
         {link: 'throttle-time', description: 'Throttle'},
-        {link: 'scan', description: 'Scan'},
-        {link: 'take-until', description: 'TakeUntil'}];
+        {link: 'concat-map', description: 'ConcatMap'},
+        {link: 'zip', description: 'Zip'},
+        {link: 'scan', description: 'Scan'},];
 }
